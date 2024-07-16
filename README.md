@@ -11,12 +11,14 @@ Internally the program operators by creating an in-memory SQLite database with a
 
 Screenshot showing widget attributes being entered
 
-
+<img width="1840" alt="Screenshot 2024-07-16 at 5 43 14 PM" src="https://github.com/user-attachments/assets/ff1c5c2a-b67c-4eb4-808c-73c562d0c340">
 
 Screenshow showing common presentation style attributes being entered
 
-
+<img width="1840" alt="Screenshot 2024-07-16 at 5 44 30 PM" src="https://github.com/user-attachments/assets/438d1e82-73cd-4c7a-829a-ad9db04aee46">
 
 Running program
+
+<img width="1840" alt="Screenshot 2024-07-16 at 5 44 35 PM" src="https://github.com/user-attachments/assets/22883124-6f16-49e8-98da-d7c97a39a121">
 
 
