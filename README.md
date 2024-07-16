@@ -21,4 +21,13 @@ Running program
 
 <img width="1840" alt="Screenshot 2024-07-16 at 5 44 35 PM" src="https://github.com/user-attachments/assets/22883124-6f16-49e8-98da-d7c97a39a121">
 
+Note:
 
+The .gitignore has a few extra files.  These are the files that are generated when the test program is run
+
+In the code, I have used TODO to indicate where changes can be made
+
+In the code there is a comment with a link to the documentation of the change
+
+Initial commit has implemented
+EDIT (hard-doded) in a GRID (hard-coded) using an INPUT (hard-coded) with its attributes and common presentation style attributes
