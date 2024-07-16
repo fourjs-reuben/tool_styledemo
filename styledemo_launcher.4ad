@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ANSI_X3.4-1968"?>
+<ActionDefaultList>
+    <ActionDefault acceleratorName="Return" acceleratorName2="Enter" contextMenu="no" name="accept" text="OK"/>
+    <ActionDefault acceleratorName="Escape" contextMenu="no" name="cancel" text="Cancel" validate="no"/>
+    <ActionDefault acceleratorName="F3" contextMenu="no" name="insert" text="Insert"/>
+    <ActionDefault acceleratorName="Control-F3" contextMenu="no" name="append" text="Append"/>
+    <ActionDefault acceleratorName="F2" contextMenu="no" name="update" text="Update"/>
+    <ActionDefault acceleratorName="F4" contextMenu="no" name="delete" text="Delete" validate="no"/>
+    <ActionDefault acceleratorName="F1" contextMenu="no" name="help" text="Help" validate="no"/>
+    <ActionDefault acceleratorName="Alt-F4" contextMenu="no" defaultView="no" name="close" text="Close" validate="no"/>
+    <ActionDefault contextMenu="no" name="interrupt" text="Interrupt"/>
+    <ActionDefault comment="Next record" contextMenu="no" image="goforw" name="next" text="Next"/>
+    <ActionDefault comment="Previous record" contextMenu="no" image="gorev" name="previous" text="Previous"/>
+    <ActionDefault comment="First record" contextMenu="no" image="gobegin" name="first" text="First"/>
+    <ActionDefault comment="Last record" contextMenu="no" image="goend" name="last" text="Last"/>
+    <ActionDefault comment="Print" contextMenu="no" image="printer" name="print" text="Print"/>
+    <ActionDefault acceleratorName="Control-F" comment="Search" image="find" name="find" text="Find"/>
+    <ActionDefault acceleratorName="Control-G" comment="Search" image="findnext" name="findnext" text="Find Next"/>
+    <ActionDefault acceleratorName="Control-C" comment="Copy" contextMenu="no" image="copy" name="editcopy" text="Copy"/>
+    <ActionDefault acceleratorName="Control-X" comment="Cut" contextMenu="no" image="cut" name="editcut" text="Cut"/>
+    <ActionDefault acceleratorName="Control-V" comment="Paste" contextMenu="no" image="paste" name="editpaste" text="Paste"/>
+    <ActionDefault acceleratorName="Tab" contextMenu="no" name="nextfield" text="Next Field"/>
+    <ActionDefault acceleratorName="Shift-Tab" contextMenu="no" name="prevfield" text="Previous Field"/>
+    <ActionDefault acceleratorName="Down" contextMenu="no" image="goforw" name="nextrow" text="Next"/>
+    <ActionDefault acceleratorName="Up" contextMenu="no" image="gorev" name="prevrow" text="Previous"/>
+    <ActionDefault acceleratorName="Home" contextMenu="no" image="gobegin" name="firstrow" text="First"/>
+    <ActionDefault acceleratorName="End" contextMenu="no" image="goend" name="lastrow" text="Last"/>
+    <ActionDefault acceleratorName="Next" contextMenu="no" name="nextpage" text="Next Page"/>
+    <ActionDefault acceleratorName="Prior" contextMenu="no" name="prevpage" text="Previous Page"/>
+    <ActionDefault acceleratorName="Control-Tab" contextMenu="no" name="nexttab" text="Next Folder Tab"/>
+    <ActionDefault acceleratorName="Control-Shift-Tab" contextMenu="no" name="prevtab" text="Previous Folder Tab"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="dialogtouched" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="enterforeground" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="enterbackground" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="notificationpushed" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="notificationselected" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="cordovacallback" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="browser_back" validate="no"/>
+    <ActionDefault contextMenu="no" defaultView="no" name="browser_forward" validate="no"/>
+    <ActionDefault acceleratorName="F12" contextMenu="yes" name="go" text="GO"/>
+    <ActionDefault acceleratorName="Control-N" contextMenu="yes" name="clear" text="Clear"/>
+    <ActionDefault acceleratorName="Control-O" contextMenu="yes" name="import" text="Import"/>
+    <ActionDefault acceleratorName="Control-S" contextMenu="yes" name="export" text="Export"/>
+</ActionDefaultList>
