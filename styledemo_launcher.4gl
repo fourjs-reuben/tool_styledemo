@@ -247,7 +247,7 @@ DEFINE i INTEGER
     CALL sb.append("EDIT f02 = formonly.test1, STYLE=\"test\"")  -- TODO replace edit with widget type
     FOR i = 1 TO m_data.widget_attribute_arr.getLength()
         CALL sb.append(", ")
-        CALL sb.append(m_data.widget_attribute_arr[i].widget_attribute_name)
+        CALL sb.append(m_data.widget_attribute_arr[i].widget_attribute_name) -- TODO add check for empty widget_attribute_name
         IF m_data.widget_attribute_arr[i].widget_attribute_value.getLength() > 0 THEN
             CALL sb.append(" = ")
             -- TODO implement a way to determine if value is quoted or not

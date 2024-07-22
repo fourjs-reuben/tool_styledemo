@@ -14,31 +14,20 @@ END FUNCTION
 
 FUNCTION widget_names()
     CREATE TABLE widget_names(widget CHAR(20), weight INTEGER)
-    INSERT INTO widget_names VALUES ("Button", 1)
     INSERT INTO widget_names VALUES ("ButtonEdit", 1)
     INSERT INTO widget_names VALUES ("CheckBox", 1)
     INSERT INTO widget_names VALUES ("ComboBox", 1)
     INSERT INTO widget_names VALUES ("DateEdit", 1)
     INSERT INTO widget_names VALUES ("DateTimeEdit", 1)
     INSERT INTO widget_names VALUES ("Edit", 1)
-    INSERT INTO widget_names VALUES ("Folder", 1)
-    INSERT INTO widget_names VALUES ("Grid", 1)
-    INSERT INTO widget_names VALUES ("Group", 1)
-    INSERT INTO widget_names VALUES ("HBox", 1)
     INSERT INTO widget_names VALUES ("Image", 1)
     INSERT INTO widget_names VALUES ("Label", 1)
-    INSERT INTO widget_names VALUES ("Page", 1)
     INSERT INTO widget_names VALUES ("ProgressBar", 1)
     INSERT INTO widget_names VALUES ("RadioGroup", 1)
-    INSERT INTO widget_names VALUES ("ScrollGrid", 1)
     INSERT INTO widget_names VALUES ("Slider", 1)
     INSERT INTO widget_names VALUES ("SpinEdit", 1)
-    INSERT INTO widget_names VALUES ("Table", 1)
     INSERT INTO widget_names VALUES ("TextEdit", 1)
     INSERT INTO widget_names VALUES ("TimeEdit", 1)
-    INSERT INTO widget_names VALUES ("Tree", 1)
-    INSERT INTO widget_names VALUES ("VBox", 1)
-    INSERT INTO widget_names VALUES ("WebComponent", 1)
 END FUNCTION
 
 FUNCTION widget_attribute_names()
@@ -159,8 +148,7 @@ FUNCTION common_style_attributes()
     INSERT INTO common_style_attributes VALUES("text_decoration", "overline", 1)
     INSERT INTO common_style_attributes VALUES("text_decoration", "underline", 1)
 
-    -- backgroundColor, defaultTTGColorm textColor  
-    -- https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_presentation_styles_015.html
+    -- backgroundColor, defaultTTGColorm textColor https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_presentation_styles_015.html
     -- list the TTY colors first
     INSERT INTO common_style_attributes VALUES("color", "black", 1)
     INSERT INTO common_style_attributes VALUES("color", "blue", 1)
@@ -170,12 +158,47 @@ FUNCTION common_style_attributes()
     INSERT INTO common_style_attributes VALUES("color", "red", 1)
     INSERT INTO common_style_attributes VALUES("color", "white", 1)
     INSERT INTO common_style_attributes VALUES("color", "yellow", 1)
+    -- add html colors here
+    INSERT INTO common_style_attributes VALUES("color", "darkBlue", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkCyan", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkGreen", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkMagenta", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkOlive", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkRed", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkOrange", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkGray", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkTeal", 2)
+    INSERT INTO common_style_attributes VALUES("color", "darkYellow", 2)
+    INSERT INTO common_style_attributes VALUES("color", "gray", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightBlue", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightCyan", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightGray", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightGreen", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightMagenta", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightOlive", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightOrange", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightRed", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightTeal", 2)
+    INSERT INTO common_style_attributes VALUES("color", "lightYellow", 2)
+    INSERT INTO common_style_attributes VALUES("color", "olive", 2)
+    INSERT INTO common_style_attributes VALUES("color", "orange", 2)
+    INSERT INTO common_style_attributes VALUES("color", "teal", 2)
+    -- added generic colors
+    INSERT INTO common_style_attributes VALUES("color", "appWorkSpace", 3)
+    INSERT INTO common_style_attributes VALUES("color", "background", 3)
+    INSERT INTO common_style_attributes VALUES("color", "buttonFace", 3)
+    INSERT INTO common_style_attributes VALUES("color", "buttonText", 3)
+    INSERT INTO common_style_attributes VALUES("color", "grayText", 3)
+    INSERT INTO common_style_attributes VALUES("color", "highLight", 3)
+    INSERT INTO common_style_attributes VALUES("color", "highLightText", 3)
+    INSERT INTO common_style_attributes VALUES("color", "infoBackground", 3)
+    INSERT INTO common_style_attributes VALUES("color", "infoText", 3)
+    INSERT INTO common_style_attributes VALUES("color", "systemAlternateBackground", 3)
+    INSERT INTO common_style_attributes VALUES("color", "window", 3)
+    INSERT INTO common_style_attributes VALUES("color", "windowText", 3)
     
-    -- TOOD add html colors here
-    -- TODO add generic colors
-
+    -- TODO maybe do a widget for these
     -- all 655356 RGB colors
-    -- TODO maybe doa widget for thse
     FOR i = 0 TO 65536
         LET s = util.Integer.toHexString(i)
         CASE s.getLength()
@@ -209,7 +232,6 @@ FUNCTION common_style_attributes()
 END FUNCTION
 
 FUNCTION widget_style_attributes()
-    -- TODO Button https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_button_style_attributes.html
     -- TODO ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
     -- TODO CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
     -- TODO DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
