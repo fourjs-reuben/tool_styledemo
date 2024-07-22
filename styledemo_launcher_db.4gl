@@ -14,10 +14,31 @@ END FUNCTION
 
 FUNCTION widget_names()
     CREATE TABLE widget_names(widget CHAR(20), weight INTEGER)
-    INSERT INTO widget_names VALUES ("edit", 1)
-    
-    -- TODO populate with more from https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_elements.html
-    
+    INSERT INTO widget_names VALUES ("Button", 1)
+    INSERT INTO widget_names VALUES ("ButtonEdit", 1)
+    INSERT INTO widget_names VALUES ("CheckBox", 1)
+    INSERT INTO widget_names VALUES ("ComboBox", 1)
+    INSERT INTO widget_names VALUES ("DateEdit", 1)
+    INSERT INTO widget_names VALUES ("DateTimeEdit", 1)
+    INSERT INTO widget_names VALUES ("Edit", 1)
+    INSERT INTO widget_names VALUES ("Folder", 1)
+    INSERT INTO widget_names VALUES ("Grid", 1)
+    INSERT INTO widget_names VALUES ("Group", 1)
+    INSERT INTO widget_names VALUES ("HBox", 1)
+    INSERT INTO widget_names VALUES ("Image", 1)
+    INSERT INTO widget_names VALUES ("Label", 1)
+    INSERT INTO widget_names VALUES ("Page", 1)
+    INSERT INTO widget_names VALUES ("ProgressBar", 1)
+    INSERT INTO widget_names VALUES ("RadioGroup", 1)
+    INSERT INTO widget_names VALUES ("ScrollGrid", 1)
+    INSERT INTO widget_names VALUES ("Slider", 1)
+    INSERT INTO widget_names VALUES ("SpinEdit", 1)
+    INSERT INTO widget_names VALUES ("Table", 1)
+    INSERT INTO widget_names VALUES ("TextEdit", 1)
+    INSERT INTO widget_names VALUES ("TimeEdit", 1)
+    INSERT INTO widget_names VALUES ("Tree", 1)
+    INSERT INTO widget_names VALUES ("VBox", 1)
+    INSERT INTO widget_names VALUES ("WebComponent", 1)
 END FUNCTION
 
 FUNCTION widget_attribute_names()
