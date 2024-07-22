@@ -1,4 +1,5 @@
 *.42?
+*.err
 bin
 *.4pwdb
 *.4pwvs
