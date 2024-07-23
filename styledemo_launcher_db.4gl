@@ -73,11 +73,11 @@ END FUNCTION
 
 FUNCTION dialog_names()
     CREATE TABLE dialog_names (dialog CHAR(20), weight INTEGER)
-    INSERT INTO dialog_names VALUES ("input", 1)
-    -- TDOO construct
-    -- TODO display array
-    -- TODO input array
-    -- TODO menu
+    INSERT INTO dialog_names VALUES ("Input", 1)
+    INSERT INTO dialog_names VALUES ("Menu", 2)
+    INSERT INTO dialog_names VALUES ("Construct", 3)
+    INSERT INTO dialog_names VALUES ("Display Array", 4)
+    INSERT INTO dialog_names VALUES ("Input Array", 5)
 END FUNCTION
 
 FUNCTION style_names()
