@@ -231,16 +231,18 @@ FUNCTION common_style_attributes()
 END FUNCTION
 
 FUNCTION widget_style_attributes()
+    DEFINE i INTEGER
+    DEFINE s STRING
     CREATE TABLE widget_style_attributes (widget CHAR(20), name CHAR(20), value CHAR(20), weight INTEGER)
     -- TODO ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "no", 1)
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "yes", 1)
     FOR i = 0 TO 2048
         LET s = i USING "<<<<", "px"
-        INSERT INTO widget_style_attributes ("ButtonEdit", "scaleIcon", s, 1)
+        INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", s, 1)
     END FOR
     -- TODO CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
-    INSERT INTO widget_style_attributes ("CheckBox", "customWidget", "toggleButton", 2)
+    INSERT INTO widget_style_attributes VALUES ("CheckBox", "customWidget", "toggleButton", 2)
     -- TODO DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "dropdown", 3)
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "modal", 3)

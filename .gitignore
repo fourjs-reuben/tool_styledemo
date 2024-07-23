@@ -1,4 +1,5 @@
 *.42?
+*.json
 *.err
 bin
 *.4pwdb
