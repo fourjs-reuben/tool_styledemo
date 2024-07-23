@@ -45,6 +45,62 @@ FUNCTION widget_attribute_names()
     INSERT INTO widget_attribute_names VALUES ("edit", "stretch", 1) 
 
     -- TODO populate with children from https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_ATTRIBUTES_section.html
+
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "autonext", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "invisible", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "justify", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "placeholder", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "scroll", 2) 
+    INSERT INTO widget_attribute_names VALUES ("buttonedit", "stretch", 2)
+
+    INSERT INTO widget_attribute_names VALUES ("CheckBox", "comment", 3) 
+    INSERT INTO widget_attribute_names VALUES ("CheckBox", "justify", 3) 
+
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "autonext", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "comment", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "invisible", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "placeholder", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "scroll", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "stretch", 4)
+
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "autonext", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "comment", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "invisible", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "justify", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "placeholder", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "scroll", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "stretch", 5)
+
+    INSERT INTO widget_attribute_names VALUES ("Image", "comment", 6) 
+    INSERT INTO widget_attribute_names VALUES ("Image", "justify", 6) 
+    INSERT INTO widget_attribute_names VALUES ("Image", "stretch", 6)
+    
+    INSERT INTO widget_attribute_names VALUES ("Label", "comment", 7) 
+    INSERT INTO widget_attribute_names VALUES ("Label", "justify", 7) 
+    INSERT INTO widget_attribute_names VALUES ("Label", "stretch", 7)
+
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "comment", 8) 
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "justify", 8) 
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "stretch", 8)
+
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "comment", 8) 
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "justify", 8) 
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "stretch", 8)
+
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "comment", 9) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "justify", 9) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "placeholder", 9) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "scroll", 9) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "stretch", 9)
+
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "autonext", 10) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "comment", 10) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "justify", 10) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "placeholder", 10) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "stretch", 10)
+    
 END FUNCTION
 
 FUNCTION widget_attribute_values()
