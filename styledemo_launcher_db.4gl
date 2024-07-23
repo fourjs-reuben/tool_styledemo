@@ -72,7 +72,7 @@ FUNCTION container_names()
 END FUNCTION
 
 FUNCTION dialog_names()
-    CREATE TABLE dialog_names (DIALOG CHAR(20), weight INTEGER)
+    CREATE TABLE dialog_names (dialog CHAR(20), weight INTEGER)
     INSERT INTO dialog_names VALUES ("input", 1)
     -- TDOO construct
     -- TODO display array
@@ -95,7 +95,6 @@ FUNCTION style_names()
     INSERT INTO style_names VALUES("common", "textDecoration", 1)
 
     CREATE INDEX sn1 ON style_names(widget, weight, name)
-
 END FUNCTION
 
 FUNCTION common_style_attributes()
@@ -232,12 +231,84 @@ FUNCTION common_style_attributes()
 END FUNCTION
 
 FUNCTION widget_style_attributes()
+    CREATE TABLE widget_style_attributes (widget CHAR(20), name CHAR(20), value CHAR(20), weight INTEGER)
     -- TODO ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "no", 1)
+    INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "yes", 1)
+    FOR i = 0 TO 2048
+        LET s = i USING "<<<<", "px"
+        INSERT INTO widget_style_attributes ("ButtonEdit", "scaleIcon", s, 1)
+    END FOR
     -- TODO CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
+    INSERT INTO widget_style_attributes ("CheckBox", "customWidget", "toggleButton", 2)
     -- TODO DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "dropdown", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "modal", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "monday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "tuesday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "wednesday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "thursday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "friday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "saturday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "sunday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "monday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "tuesday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "wednesday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "thursday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "friday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "saturday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "firstDayOfWeek", "sunday", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "showCurrentMonthOnly", "yes", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "showCurrentMonthOnly", "no", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "showWeekNumber", "yes", 3)
+    INSERT INTO widget_style_attributes VALUES ("DateEdit", "showWeekNumber", "no", 3)
     -- TODO DateTimeEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_datetimeedit_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "calendarType", "dropdown", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "calendarType", "modal", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "monday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "tuesday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "wednesday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "thursday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "friday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "saturday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "sunday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "monday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "tuesday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "wednesday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "thursday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "friday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "saturday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "firstDayOfWeek", "sunday", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showCurrentMonthOnly", "yes", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showCurrentMonthOnly", "no", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showWeekNumber", "yes", 4)
+    INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showWeekNumber", "no", 4)
     -- TODO Image https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_image_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top left", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top horizontalCenter", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top right", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "verticalCenter left", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "verticalCenter horizontalCenter", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "verticalCenter right", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom left", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom horizontalCenter", 5)
+    INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom right", 5)
     -- TODO Label https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_label_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("Label", "sanitize", "yes", 6)
+    INSERT INTO widget_style_attributes VALUES ("Label", "sanitize", "no", 6)
+    INSERT INTO widget_style_attributes VALUES ("Label", "textFormat", "plain", 6)
+    INSERT INTO widget_style_attributes VALUES ("Label", "textFormat", "html", 6)
     -- TODO ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "no", 7)
+    INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "center", 7)
+    INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "system", 7)
     -- TODO TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "sanitize", "yes", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "sanitize", "no", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "textFormat", "plain", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "textFormat", "html", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "showEditToolBox", "no", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "showEditToolBox", "yes", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "wrapPolicy", "atWordBoundary", 7)
+    INSERT INTO widget_style_attributes VALUES ("TextEdit", "wrapPolicy", "anywhere", 7)
 END FUNCTION
