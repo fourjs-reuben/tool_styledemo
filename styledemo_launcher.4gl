@@ -51,10 +51,10 @@ MAIN
                 CALL ui.Window.getCurrent().getForm().ensureElementVisible("pgper")
 
             ON CHANGE widget_attribute_name
-                CALL populate_widget_attribute_name(DIALOG,"edit", m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
+                CALL populate_widget_attribute_name(DIALOG, m_data.widget, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
 
             ON CHANGE widget_attribute_value
-                CALL populate_widget_attribute_value(DIALOG, "edit", m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
+                CALL populate_widget_attribute_value(DIALOG, m_data.widget, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
 
             AFTER FIELD widget_attribute_name
                 DISPLAY build_per() TO per
@@ -108,14 +108,14 @@ MAIN
 END MAIN
 
 FUNCTION populate_widget_attribute_name(d ui.Dialog, widget STRING, BUFFER STRING)
-DEFINE list itemsListType
+    DEFINE list itemsListType
 
     CALL populate_widget_attribute_name_sql(widget, BUFFER) RETURNING list
     CALL d.setCompleterItems(list)
 END FUNCTION
 
 FUNCTION populate_widget_attribute_value(d ui.Dialog, widget STRING, NAME STRING,  BUFFER STRING)
-DEFINE list itemsListType
+    DEFINE list itemsListType
 
     CALL populate_widget_attribute_value_sql(widget, NAME, BUFFER) RETURNING list
     CALL d.setCompleterItems(list)
@@ -156,8 +156,6 @@ FUNCTION populate_style_value(d ui.Dialog, att STRING, buffer STRING)
     CALL d.setCompleterItems(list)
 END FUNCTION
 
-
-
 FUNCTION populate_widget_attribute_value_sql(widget STRING, NAME STRING, BUFFER STRING) RETURNS itemsListType
     DEFINE sql STRING
     DEFINE value STRING
@@ -191,7 +189,6 @@ FUNCTION populate_widget_attribute_name_sql(widget STRING, BUFFER STRING) RETURN
     END FOREACH
     RETURN list
 END FUNCTION
-
 
 FUNCTION populate_completer_name_sql(widget STRING, buffer STRING) RETURNS itemsListType
     DEFINE sql STRING

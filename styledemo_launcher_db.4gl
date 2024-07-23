@@ -68,7 +68,7 @@ FUNCTION container_names()
     INSERT INTO container_names VALUES ("table", 2)
     INSERT INTO container_names VALUES ("scrollgrid", 3)
     -- TODO matrix? 
-    -- TOODO tree?
+    -- TODO tree?
 END FUNCTION
 
 FUNCTION dialog_names()
@@ -237,8 +237,8 @@ FUNCTION widget_style_attributes()
     -- TODO ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "no", 1)
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "yes", 1)
-    FOR i = 0 TO 2048
-        LET s = i USING "<<<<", "px"
+    FOR i = 0 TO 72
+        LET s = i USING "<<", "px"
         INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", s, 1)
     END FOR
     -- TODO CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html

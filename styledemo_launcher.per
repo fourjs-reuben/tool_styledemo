@@ -4,7 +4,7 @@ HBOX (SPLITTER)
 VBOX
 GRID
 {
-Widget    [f01      ] Container [f02      ] Dialog    [f03      ]  (NOT IMPLEMENTED)
+Container    [f01      ] Widget    [f02      ] Dialog    [f03      ] DataType    [f04]
 }
 END #GRID
 FOLDER
@@ -66,9 +66,10 @@ END #VBOX
 END #LAYOUT
 ATTRIBUTES
 
-COMBOBOX f01 = formonly.WIDGET, ITEMS=("Edit"), NOENTRY;
-COMBOBOX f02 = formonly.container, ITEMS=("Grid"), NOENTRY;
-COMBOBOX f03 = formonly.dialog, ITEMS=("Input"), NOENTRY; 
+COMBOBOX f01 = formonly.container, ITEMS=("Grid", "Table", "ScrollGrid");
+COMBOBOX f02 = formonly.WIDGET, ITEMS=("ButtonEdit", "CheckBox", "ComboBox", "DateEdit", "DateTimeEdit", "Edit", "Image", "Label", "ProgressBar", "RadioGroup", "Slider", "SpinEdit", "TextEdit", "TimeEdit");
+COMBOBOX f03 = formonly.dialog, ITEMS=("Input");
+COMBOBOX f04 = formonly.DataType, ITEMS=("CHAR", "BOOLEAN", "INTEGER", "DATE", "DATETIME", "INTERVAL", "DECIMAL", "FLOAT");
 
 EDIT c01 = formonly.widget_attribute_name, SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press SPACE";
 EDIT c02 = formonly.widget_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press SPACE";
