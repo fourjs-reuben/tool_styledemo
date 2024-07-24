@@ -28,6 +28,15 @@ FUNCTION widget_names()
     INSERT INTO widget_names VALUES ("SpinEdit", 1)
     INSERT INTO widget_names VALUES ("TextEdit", 1)
     INSERT INTO widget_names VALUES ("TimeEdit", 1)
+-- widget names for specfic table attributes
+    INSERT INTO widget_names VALUES ("Width", 1)
+    INSERT INTO widget_names VALUES ("DisplayLike", 1)
+    INSERT INTO widget_names VALUES ("DoubleClick", 1)
+    INSERT INTO widget_names VALUES ("Flipped", 1)
+    INSERT INTO widget_names VALUES ("Height", 1)
+    INSERT INTO widget_names VALUES ("Orientation", 1)
+    INSERT INTO widget_names VALUES ("Split", 1)
+    
 END FUNCTION
 
 FUNCTION widget_attribute_names()
@@ -39,7 +48,9 @@ FUNCTION widget_attribute_names()
     INSERT INTO widget_attribute_names VALUES ("Edit", "justify", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "placeholder", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "scroll", 1) 
-    INSERT INTO widget_attribute_names VALUES ("Edit", "stretch", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "stretch", 1)
+    INSERT INTO widget_attribute_names VALUES ("Edit", "upshift", 1)
+    INSERT INTO widget_attribute_names VALUES ("Edit", "downshift", 1)
 
     INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "autonext", 2) 
     INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "comment", 2) 
