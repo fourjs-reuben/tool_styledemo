@@ -33,9 +33,6 @@ END FUNCTION
 FUNCTION widget_attribute_names()
     CREATE TABLE widget_attribute_names (widget CHAR(20), name CHAR(20), weight INTEGER)
 
-    -- Edit TODO https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_EDIT_Item_Type.html
-
-
     INSERT INTO widget_attribute_names VALUES ("Edit", "autonext", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "comment", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "invisible", 1) 
@@ -44,15 +41,13 @@ FUNCTION widget_attribute_names()
     INSERT INTO widget_attribute_names VALUES ("Edit", "scroll", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "stretch", 1) 
 
-    -- TODO populate with children from https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_ATTRIBUTES_section.html
-
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "autonext", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "comment", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "invisible", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "justify", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "placeholder", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "scroll", 2) 
-    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "stretch", 2)
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "autonext", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "invisible", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "justify", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "placeholder", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "scroll", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "stretch", 2)
 
     INSERT INTO widget_attribute_names VALUES ("CheckBox", "comment", 3) 
     INSERT INTO widget_attribute_names VALUES ("CheckBox", "justify", 3) 
@@ -114,16 +109,108 @@ END FUNCTION
 FUNCTION widget_attribute_values()
     CREATE TABLE widget_attribute_values (widget CHAR(20), name CHAR(20), value CHAR(20), weight INTEGER)
 
-    -- https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FSFAttributes_JUSTIFY.html
-    INSERT INTO widget_attribute_values VALUES("edit", "justify", "left", 1) 
-    INSERT INTO widget_attribute_values VALUES ("edit", "justify", "center", 2) 
-    INSERT INTO widget_attribute_values VALUES ("edit", "justify", "right", 3) 
+    INSERT INTO widget_attribute_values VALUES("Edit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("Edit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("Edit", "justify", "right", 3) 
 
-    -- https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FSFAttributes_STRETCH.html
-    INSERT INTO widget_attribute_values VALUES ("edit", "stretch", "none", 1)
-    INSERT INTO widget_attribute_values VALUES ("edit", "stretch", "x", 1)
-    INSERT INTO widget_attribute_values VALUES ("edit", "stretch", "y", 1)
-    INSERT INTO widget_attribute_values VALUES ("edit", "stretch", "both", 1)
+    INSERT INTO widget_attribute_values VALUES ("Edit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("Edit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("Edit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("Edit", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES("ButtonEdit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("ButtonEdit", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES("CheckBox", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("CheckBox", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("CheckBox", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES("ComboBox", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("ComboBox", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES("DateEdit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateEdit", "stretch", "both", 1)
+    
+    INSERT INTO widget_attribute_values VALUES("DateTimeEdit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("DateTimeEdit", "stretch", "both", 1)
+    
+    INSERT INTO widget_attribute_values VALUES("Image", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("Image", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("Image", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("Image", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("Image", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("Image", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("Image", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES("Label", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("Label", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("Label", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("Label", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("Label", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("Label", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("Label", "stretch", "both", 1)
+
+        INSERT INTO widget_attribute_values VALUES("ProgressBar", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("ProgressBar", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("RadioGroup", "stretch", "both", 1)
+
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("TextEdit", "stretch", "both", 1) 
+
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "justify", "left", 1) 
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "justify", "center", 2) 
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "justify", "right", 3) 
+
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "stretch", "none", 1)
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "stretch", "x", 1)
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "stretch", "y", 1)
+    INSERT INTO widget_attribute_values VALUES ("TimeEdit", "stretch", "both", 1)   
 END FUNCTION
 
 FUNCTION container_names()

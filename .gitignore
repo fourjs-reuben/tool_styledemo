@@ -2,11 +2,7 @@
 *.json
 *.err
 bin
-*.4pw
-*.4pwdb
-*.4pwvs
-*.4pwcfg
-*.4pdb
+*.4p*
 .DS_Store
 styledemo_test.per
 styledemo_test.4st
