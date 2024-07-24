@@ -234,19 +234,23 @@ FUNCTION build_per() RETURNS STRING
 
     LET sb = base.StringBuffer.create()
     CALL sb.append("LAYOUT (TEXT=\"Widget & Style Demo\")\n")
-    CALL sb.append(m_data.container_name + "\n") -- TODO replace with container
-    CALL sb.append("{\n")
-    CALL sb.append("Control [f01                 : ]\n")  -- TODO set grid width to entered value
-    CALL sb.append("Test    [f02                 : ]\n")  -- TODO set grid width to entered value
-    CALL sb.append("}\n")
-    CALL sb.append("END\n")
-    CALL sb.append("END\n")
-    CALL sb.append("ATTRIBUTES\n")
-    CALL sb.append(m_data.widget_name + " f01 = formonly.ctrl;\n")  -- TODO replace edit with widget type
-    CALL sb.append(m_data.widget_name + " f02 = formonly.test1, STYLE=\"test\"")  -- TODO replace edit with widget type
+    IF m_data.container_name == "Grid" THEN
+        CALL sb.append("    GRID\n" || "    {\n")
+        CALL sb.append("        Control [f01                 : ]\n" || "        Test    [f02                 : ]\n")  -- TODO set grid width to entered value
+    ELSE IF m_data.container_name == "Table" THEN
+            CALL sb.append("    TABLE\n" || "    {\n")
+            CALL sb.append("        [f01        |f02        ]\n")  -- TODO set table width to entered value
+        END IF
+    END IF
+    CALL sb.append("    }\n" || "    END\n")
+    CALL sb.append("END\n" || "ATTRIBUTES\n")
+    CALL sb.append(m_data.widget_name || " f01 = formonly.ctrl;\n")
+    CALL sb.append(m_data.widget_name || " f02 = formonly.test1, STYLE=\"test\"")
     FOR i = 1 TO m_data.widget_attribute_arr.getLength()
-        CALL sb.append(", ")
-        CALL sb.append(m_data.widget_attribute_arr[i].widget_attribute_name) -- TODO add check for empty widget_attribute_name
+        IF m_data.widget_attribute_arr[i].widget_attribute_name.getLength() > 0 THEN
+            CALL sb.append(", ")
+            CALL sb.append(m_data.widget_attribute_arr[i].widget_attribute_name)
+        END IF
         IF m_data.widget_attribute_arr[i].widget_attribute_value.getLength() > 0 THEN
             CALL sb.append(" = ")
             -- TODO implement a way to determine if value is quoted or not
