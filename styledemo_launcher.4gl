@@ -229,12 +229,12 @@ END FUNCTION
 -- build per file
 --write from scratch
 FUNCTION build_per() RETURNS STRING
-DEFINE sb base.StringBuffer
-DEFINE i INTEGER
+    DEFINE sb base.StringBuffer
+    DEFINE i INTEGER
 
     LET sb = base.StringBuffer.create()
     CALL sb.append("LAYOUT (TEXT=\"Widget & Style Demo\")\n")
-    CALL sb.append("GRID\n") -- TODO replace with container
+    CALL sb.append(m_data.container_name + "\n") -- TODO replace with container
     CALL sb.append("{\n")
     CALL sb.append("Control [f01                 : ]\n")  -- TODO set grid width to entered value
     CALL sb.append("Test    [f02                 : ]\n")  -- TODO set grid width to entered value
@@ -242,8 +242,8 @@ DEFINE i INTEGER
     CALL sb.append("END\n")
     CALL sb.append("END\n")
     CALL sb.append("ATTRIBUTES\n")
-    CALL sb.append("EDIT f01 = formonly.ctrl;\n")  -- TODO replace edit with widget type
-    CALL sb.append("EDIT f02 = formonly.test1, STYLE=\"test\"")  -- TODO replace edit with widget type
+    CALL sb.append(m_data.widget_name + " f01 = formonly.ctrl;\n")  -- TODO replace edit with widget type
+    CALL sb.append(m_data.widget_name + " f02 = formonly.test1, STYLE=\"test\"")  -- TODO replace edit with widget type
     FOR i = 1 TO m_data.widget_attribute_arr.getLength()
         CALL sb.append(", ")
         CALL sb.append(m_data.widget_attribute_arr[i].widget_attribute_name) -- TODO add check for empty widget_attribute_name

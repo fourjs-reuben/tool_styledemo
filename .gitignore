@@ -2,6 +2,7 @@
 *.json
 *.err
 bin
+*.4pw
 *.4pwdb
 *.4pwvs
 *.4pwcfg
