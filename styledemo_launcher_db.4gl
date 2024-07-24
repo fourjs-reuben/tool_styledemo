@@ -123,8 +123,8 @@ FUNCTION container_names()
     INSERT INTO container_names VALUES ("grid", 1)
     INSERT INTO container_names VALUES ("table", 2)
     INSERT INTO container_names VALUES ("scrollgrid", 3)
-    -- TODO matrix? 
-    -- TODO tree?
+    INSERT INTO container_names VALUES ("matrix", 4)
+    INSERT INTO container_names VALUES ("tree", 5)
 END FUNCTION
 
 FUNCTION dialog_names()
