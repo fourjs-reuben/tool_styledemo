@@ -36,23 +36,23 @@ FUNCTION widget_attribute_names()
     -- Edit TODO https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_EDIT_Item_Type.html
 
 
-    INSERT INTO widget_attribute_names VALUES ("edit", "autonext", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "comment", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "invisible", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "justify", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "placeholder", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "scroll", 1) 
-    INSERT INTO widget_attribute_names VALUES ("edit", "stretch", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "autonext", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "comment", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "invisible", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "justify", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "placeholder", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "scroll", 1) 
+    INSERT INTO widget_attribute_names VALUES ("Edit", "stretch", 1) 
 
     -- TODO populate with children from https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/c_fgl_FormSpecFiles_ATTRIBUTES_section.html
 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "autonext", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "comment", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "invisible", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "justify", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "placeholder", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "scroll", 2) 
-    INSERT INTO widget_attribute_names VALUES ("buttonedit", "stretch", 2)
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "autonext", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "invisible", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "justify", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "placeholder", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "scroll", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Buttonedit", "stretch", 2)
 
     INSERT INTO widget_attribute_names VALUES ("CheckBox", "comment", 3) 
     INSERT INTO widget_attribute_names VALUES ("CheckBox", "justify", 3) 
@@ -290,16 +290,16 @@ FUNCTION widget_style_attributes()
     DEFINE i INTEGER
     DEFINE s STRING
     CREATE TABLE widget_style_attributes (widget CHAR(20), name CHAR(20), value CHAR(20), weight INTEGER)
-    -- TODO ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
+    -- ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "no", 1)
     INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", "yes", 1)
     FOR i = 0 TO 72
         LET s = i USING "<<", "px"
         INSERT INTO widget_style_attributes VALUES ("ButtonEdit", "scaleIcon", s, 1)
     END FOR
-    -- TODO CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
+    -- CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("CheckBox", "customWidget", "toggleButton", 2)
-    -- TODO DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
+    -- DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "dropdown", 3)
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "calendarType", "modal", 3)
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "daysOff", "monday", 3)
@@ -320,7 +320,7 @@ FUNCTION widget_style_attributes()
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "showCurrentMonthOnly", "no", 3)
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "showWeekNumber", "yes", 3)
     INSERT INTO widget_style_attributes VALUES ("DateEdit", "showWeekNumber", "no", 3)
-    -- TODO DateTimeEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_datetimeedit_style_attributes.html
+    -- DateTimeEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_datetimeedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "calendarType", "dropdown", 4)
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "calendarType", "modal", 4)
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "daysOff", "monday", 4)
@@ -341,7 +341,7 @@ FUNCTION widget_style_attributes()
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showCurrentMonthOnly", "no", 4)
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showWeekNumber", "yes", 4)
     INSERT INTO widget_style_attributes VALUES ("DateTimeEdit", "showWeekNumber", "no", 4)
-    -- TODO Image https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_image_style_attributes.html
+    -- Image https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_image_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top left", 5)
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top horizontalCenter", 5)
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "top right", 5)
@@ -351,16 +351,16 @@ FUNCTION widget_style_attributes()
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom left", 5)
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom horizontalCenter", 5)
     INSERT INTO widget_style_attributes VALUES ("Image", "alignment", "bottom right", 5)
-    -- TODO Label https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_label_style_attributes.html
+    -- Label https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_label_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("Label", "sanitize", "yes", 6)
     INSERT INTO widget_style_attributes VALUES ("Label", "sanitize", "no", 6)
     INSERT INTO widget_style_attributes VALUES ("Label", "textFormat", "plain", 6)
     INSERT INTO widget_style_attributes VALUES ("Label", "textFormat", "html", 6)
-    -- TODO ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
+    -- ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "no", 7)
     INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "center", 7)
     INSERT INTO widget_style_attributes VALUES ("ProgressBar", "percentageVisible", "system", 7)
-    -- TODO TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
+    -- TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
     INSERT INTO widget_style_attributes VALUES ("TextEdit", "sanitize", "yes", 7)
     INSERT INTO widget_style_attributes VALUES ("TextEdit", "sanitize", "no", 7)
     INSERT INTO widget_style_attributes VALUES ("TextEdit", "textFormat", "plain", 7)

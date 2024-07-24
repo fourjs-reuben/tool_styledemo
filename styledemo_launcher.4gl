@@ -1,12 +1,13 @@
 IMPORT xml
-
+IMPORT FGL styledemo_launcher_db
+IMPORT FGL fgldialog
 TYPE itemsListType DYNAMIC ARRAY OF STRING
 
 DEFINE m_data RECORD
 
-    widget STRING,
-    container STRING,
-    dialog STRING,
+    widget_name STRING,
+    container_name STRING,
+    dialog_name STRING,
 
     widget_attribute_arr DYNAMIC ARRAY OF RECORD
         widget_attribute_name STRING,
@@ -33,17 +34,18 @@ MAIN
     CALL ui.Interface.loadActionDefaults("styledemo_launcher.4ad")
     CLOSE WINDOW SCREEN
     OPEN WINDOW w WITH FORM "styledemo_launcher" ATTRIBUTES(STYLE="maximized")
+    
     CALL ui.Interface.setText("Launcher")
     
     CONNECT TO ":memory:+driver='dbmsqt'"
     CALL populate_db()
     
-    LET m_data.widget = "Edit"
-    LET m_data.container = "Grid"
-    LET m_data.dialog = "Input"
+    LET m_data.widget_name = "Edit"
+    LET m_data.container_name = "Grid"
+    LET m_data.dialog_name = "Input"
 
     DIALOG ATTRIBUTES(UNBUFFERED)
-        INPUT BY NAME m_data.widget, m_data.container, m_data.dialog ATTRIBUTES(WITHOUT DEFAULTS = TRUE)
+        INPUT BY NAME m_data.widget_name, m_data.container_name, m_data.dialog_name ATTRIBUTES(WITHOUT DEFAULTS = TRUE)
         END INPUT
 
         INPUT ARRAY m_data.widget_attribute_arr FROM widget_attribute_scr.* ATTRIBUTES(INSERT ROW = FALSE)
@@ -51,10 +53,10 @@ MAIN
                 CALL ui.Window.getCurrent().getForm().ensureElementVisible("pgper")
 
             ON CHANGE widget_attribute_name
-                CALL populate_widget_attribute_name(DIALOG, m_data.widget, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
+                CALL populate_widget_attribute_name(DIALOG, m_data.widget_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
 
             ON CHANGE widget_attribute_value
-                CALL populate_widget_attribute_value(DIALOG, m_data.widget, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
+                CALL populate_widget_attribute_value(DIALOG, m_data.widget_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
 
             AFTER FIELD widget_attribute_name
                 DISPLAY build_per() TO per
@@ -97,10 +99,10 @@ MAIN
             INITIALIZE m_data TO NULL
             
         ON ACTION IMPORT ATTRIBUTES(TEXT="Import")
-            CALL fgl_winmessage("Info", "Not Implemented", "info") -- TODO read json file and serialize into m_data
+            CALL fgl_winMessage("Info", "Not Implemented", "info") -- TODO read json file and serialize into m_data
             
         ON ACTION export ATTRIBUTES(TEXT="Export")
-            CALL fgl_winmessage("Info", "Not implemented", "info") -- TODO implement serialize m_data to json and write to file
+            CALL fgl_winMessage("Info", "Not implemented", "info") -- TODO implement serialize m_data to json and write to file
             
         ON ACTION close
             EXIT DIALOG
@@ -124,7 +126,7 @@ END FUNCTION
 FUNCTION populate_style_name(d ui.Dialog, widget STRING, buffer STRING)
     DEFINE list itemsListType
 
-    CALL populate_completer_name_sql("common", buffer) RETURNING list
+    CALL populate_completer_name_sql(widget, buffer) RETURNING list
     CALL d.setCompleterItems(list)
 END FUNCTION
 
@@ -162,10 +164,10 @@ FUNCTION populate_widget_attribute_value_sql(widget STRING, NAME STRING, BUFFER 
     DEFINE list itemsListType
 
     LET sql = "SELECT FIRST 50 value FROM widget_attribute_values WHERE widget = ? AND name = ? AND value LIKE ? ORDER BY weight, name"
-    LET buffer = buffer, "%"
+    LET BUFFER = BUFFER, "%"
 
     DECLARE widget_attribute_value_curs CURSOR FROM sql
-    OPEN widget_attribute_value_curs USING widget, NAME, buffer
+    OPEN widget_attribute_value_curs USING widget, NAME, BUFFER
 
     FOREACH widget_attribute_value_curs INTO value
         LET list[list.getLength() + 1] = value
@@ -179,10 +181,10 @@ FUNCTION populate_widget_attribute_name_sql(widget STRING, BUFFER STRING) RETURN
     DEFINE list itemsListType
 
     LET sql = "SELECT FIRST 50 name FROM widget_attribute_names WHERE widget = ? AND name LIKE ? ORDER BY weight, name"
-    LET buffer = buffer, "%"
+    LET BUFFER = BUFFER, "%"
 
     DECLARE widget_attribute_name_curs CURSOR FROM sql
-    OPEN widget_attribute_name_curs USING widget, buffer
+    OPEN widget_attribute_name_curs USING widget, BUFFER
 
     FOREACH widget_attribute_name_curs INTO name
         LET list[list.getLength() + 1] = name
@@ -274,7 +276,7 @@ FUNCTION build_4st() RETURNS STRING
     LET stylelist_node = doc.getDocumentElement()
 
     LET style_node = stylelist_node.appendChildElement("Style")
-    CALL style_node.setAttribute("name", m_data.widget)
+    CALL style_node.setAttribute("name", m_data.widget_name)
     FOR i = 1 TO m_data.widget_style_arr.getLength()
         LET styleattribute_node = style_node.appendChildElement("StyleAttribute")
         CALL styleattribute_node.setAttribute("name", m_data.widget_style_arr[i].widget_style_attribute_name)
