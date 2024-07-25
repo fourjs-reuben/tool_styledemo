@@ -11,6 +11,7 @@ FUNCTION populate_db()
     CALL common_style_attributes()
     CALL widget_style_names()
     CALL widget_style_values()
+    CALL dataType_names()
 END FUNCTION
 
 FUNCTION widget_names()
@@ -329,16 +330,13 @@ FUNCTION widget_style_values()
     DEFINE i INTEGER
     DEFINE s STRING
     CREATE TABLE widget_style_values (name CHAR(20), value CHAR(20), weight INTEGER)
-    -- ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
     INSERT INTO widget_style_values VALUES ("scaleIcon", "no", 1)
     INSERT INTO widget_style_values VALUES ("scaleIcon", "yes", 2)
     FOR i = 0 TO 72
         LET s = i USING "<<", "px"
         INSERT INTO widget_style_values VALUES ("scaleIcon", s, i+3)
     END FOR
-    -- CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
     INSERT INTO widget_style_values VALUES ("customWidget", "toggleButton", 1)
-    -- DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
     INSERT INTO widget_style_values VALUES ("calendarType", "dropdown", 1)
     INSERT INTO widget_style_values VALUES ("calendarType", "modal", 1)
     INSERT INTO widget_style_values VALUES ("daysOff", "monday", 2)
@@ -359,28 +357,6 @@ FUNCTION widget_style_values()
     INSERT INTO widget_style_values VALUES ("showCurrentMonthOnly", "no", 4)
     INSERT INTO widget_style_values VALUES ("showWeekNumber", "yes", 5)
     INSERT INTO widget_style_values VALUES ("showWeekNumber", "no", 5)
-    -- DateTimeEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_datetimeedit_style_attributes.html
-    INSERT INTO widget_style_values VALUES ("calendarType", "dropdown", 1)
-    INSERT INTO widget_style_values VALUES ("calendarType", "modal", 1)
-    INSERT INTO widget_style_values VALUES ("daysOff", "monday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "tuesday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "wednesday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "thursday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "friday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "saturday", 2)
-    INSERT INTO widget_style_values VALUES ("daysOff", "sunday", 2)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "monday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "tuesday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "wednesday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "thursday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "friday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "saturday", 3)
-    INSERT INTO widget_style_values VALUES ("firstDayOfWeek", "sunday", 3)
-    INSERT INTO widget_style_values VALUES ("showCurrentMonthOnly", "yes", 4)
-    INSERT INTO widget_style_values VALUES ("showCurrentMonthOnly", "no", 4)
-    INSERT INTO widget_style_values VALUES ("showWeekNumber", "yes", 5)
-    INSERT INTO widget_style_values VALUES ("showWeekNumber", "no", 5)
-    -- Image https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_image_style_attributes.html
     INSERT INTO widget_style_values VALUES ("alignment", "top left", 1)
     INSERT INTO widget_style_values VALUES ("alignment", "top horizontalCenter", 2)
     INSERT INTO widget_style_values VALUES ("alignment", "top right", 3)
@@ -390,16 +366,13 @@ FUNCTION widget_style_values()
     INSERT INTO widget_style_values VALUES ("alignment", "bottom left", 7)
     INSERT INTO widget_style_values VALUES ("alignment", "bottom horizontalCenter", 8)
     INSERT INTO widget_style_values VALUES ("alignment", "bottom right", 9)
-    -- Label https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_label_style_attributes.html
     INSERT INTO widget_style_values VALUES ("sanitize", "yes", 1)
     INSERT INTO widget_style_values VALUES ("sanitize", "no", 1)
     INSERT INTO widget_style_values VALUES ("textFormat", "plain", 2)
     INSERT INTO widget_style_values VALUES ("textFormat", "html", 2)
-    -- ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
     INSERT INTO widget_style_values VALUES ("percentageVisible", "no", 1)
     INSERT INTO widget_style_values VALUES ("percentageVisible", "center", 2)
     INSERT INTO widget_style_values VALUES ("percentageVisible", "system", 3)
-    -- TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
     INSERT INTO widget_style_values VALUES ("sanitize", "yes", 1)
     INSERT INTO widget_style_values VALUES ("sanitize", "no", 1)
     INSERT INTO widget_style_values VALUES ("textFormat", "plain", 2)
@@ -408,4 +381,21 @@ FUNCTION widget_style_values()
     INSERT INTO widget_style_values VALUES ("showEditToolBox", "yes", 3)
     INSERT INTO widget_style_values VALUES ("wrapPolicy", "atWordBoundary", 4)
     INSERT INTO widget_style_values VALUES ("wrapPolicy", "anywhere", 4)
+    -- ButtonEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_buttonedit_style_attributes.html
+    -- CheckBox https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_checkbox_style_attributes.html
+    -- DateEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_dateedit_style_attributes.html
+    -- DateTimeEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_datetimeedit_style_attributes.html
+    -- Image https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_image_style_attributes.html
+    -- Label https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_label_style_attributes.html
+    -- ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
+    -- TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
+END FUNCTION
+
+FUNCTION dataType_names()
+    CREATE TABLE dataType_names (widget CHAR(20), name CHAR(20), weight INTEGER)
+    INSERT INTO dataType_names VALUES ("Edit", "CHAR", 1)
+    INSERT INTO dataType_names VALUES ("Edit", "INTEGER", 2)
+    INSERT INTO dataType_names VALUES ("Edit", "DECIMAL", 3)
+    INSERT INTO dataType_names VALUES ("Edit", "FLOAT", 4)
+    INSERT INTO dataType_names VALUES ("Edit", "DATE", 5)
 END FUNCTION
