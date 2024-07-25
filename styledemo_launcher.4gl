@@ -1,6 +1,7 @@
 IMPORT xml
 IMPORT FGL styledemo_launcher_db
 IMPORT FGL fgldialog
+
 TYPE itemsListType DYNAMIC ARRAY OF STRING
 
 DEFINE m_data RECORD
@@ -8,6 +9,7 @@ DEFINE m_data RECORD
     widget_name STRING,
     container_name STRING,
     dialog_name STRING,
+    dataType_name STRING,
 
     widget_attribute_arr DYNAMIC ARRAY OF RECORD
         widget_attribute_name STRING,
@@ -43,11 +45,13 @@ MAIN
     LET m_data.widget_name = "Edit"
     LET m_data.container_name = "Grid"
     LET m_data.dialog_name = "Input"
+    LET m_data.dataType_name = "STRING"
 
     DIALOG ATTRIBUTES(UNBUFFERED)
-        INPUT BY NAME m_data.widget_name, m_data.container_name, m_data.dialog_name ATTRIBUTES(WITHOUT DEFAULTS = TRUE)
+        -- INPUT for ComboBoxes
+        INPUT BY NAME m_data.widget_name, m_data.container_name, m_data.dialog_name, m_data.dataType_name ATTRIBUTES(WITHOUT DEFAULTS = TRUE)
         END INPUT
-
+        -- INPUT ARRAY for Widget Attributes tab
         INPUT ARRAY m_data.widget_attribute_arr FROM widget_attribute_scr.* ATTRIBUTES(INSERT ROW = FALSE)
             BEFORE INPUT
                 CALL ui.Window.getCurrent().getForm().ensureElementVisible("pgper")
@@ -56,7 +60,7 @@ MAIN
                 CALL populate_widget_attribute_name(DIALOG, m_data.widget_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
 
             ON CHANGE widget_attribute_value
-                CALL populate_widget_attribute_value(DIALOG, m_data.widget_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
+                CALL populate_widget_attribute_value(DIALOG, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
 
             AFTER FIELD widget_attribute_name
                 DISPLAY build_per() TO per
@@ -67,7 +71,27 @@ MAIN
             AFTER ROW
                 DISPLAY build_per() TO per
         END INPUT
+        -- INPUT ARRAY for Widget Styles tab
+        INPUT ARRAY m_data.widget_style_arr FROM widget_style_scr.* ATTRIBUTES(INSERT ROW = FALSE)
+            BEFORE INPUT
+                CALL ui.Window.getCurrent().getForm().ensureElementVisible("pg4st")
 
+            ON CHANGE widget_style_attribute_name
+                CALL populate_widget_style_name(DIALOG, m_data.widget_name, m_data.widget_style_arr[arr_curr()].widget_style_attribute_name)
+
+            ON CHANGE widget_style_attribute_value
+                CALL populate_widget_style_value(
+                    DIALOG, m_data.widget_style_arr[arr_curr()].widget_style_attribute_name,
+                    m_data.widget_style_arr[arr_curr()].widget_style_attribute_value)
+
+            AFTER FIELD widget_style_attribute_value
+                DISPLAY build_4st() TO st
+
+            AFTER ROW
+                DISPLAY build_4st() TO st
+
+        END INPUT
+        -- INPUT ARRAY for Common Styles tab
         INPUT ARRAY m_data.common_style_arr FROM common_style_scr.* ATTRIBUTES(INSERT ROW = FALSE)
             BEFORE INPUT
                 CALL ui.Window.getCurrent().getForm().ensureElementVisible("pg4st")
@@ -109,72 +133,13 @@ MAIN
     END DIALOG
 END MAIN
 
+-- Fills dialog box when typing in Name column of Widget Attributes tab
 FUNCTION populate_widget_attribute_name(d ui.Dialog, widget STRING, BUFFER STRING)
     DEFINE list itemsListType
 
     CALL populate_widget_attribute_name_sql(widget, BUFFER) RETURNING list
     CALL d.setCompleterItems(list)
 END FUNCTION
-
-FUNCTION populate_widget_attribute_value(d ui.Dialog, widget STRING, NAME STRING,  BUFFER STRING)
-    DEFINE list itemsListType
-
-    CALL populate_widget_attribute_value_sql(widget, NAME, BUFFER) RETURNING list
-    CALL d.setCompleterItems(list)
-END FUNCTION
-
-FUNCTION populate_style_name(d ui.Dialog, widget STRING, buffer STRING)
-    DEFINE list itemsListType
-
-    CALL populate_completer_name_sql(widget, buffer) RETURNING list
-    CALL d.setCompleterItems(list)
-END FUNCTION
-
-FUNCTION populate_style_value(d ui.Dialog, att STRING, buffer STRING)
-    DEFINE list itemsListType
-
-    CASE att
-        WHEN "backgroundColor"
-            CALL populate_completer_sql("color", buffer) RETURNING list
-        WHEN "border"
-            CALL populate_completer_sql("border", buffer) RETURNING list
-        WHEN "defaultTTFColor"
-            CALL populate_completer_sql("color", buffer) RETURNING list
-        WHEN "fontFamily"
-            CALL populate_completer_sql("font_family", buffer) RETURNING list
-        WHEN "fontSize"
-            CALL populate_completer_sql("font_size", buffer) RETURNING list
-        WHEN "fontStyle"
-            CALL populate_completer_sql("font_style", buffer) RETURNING list
-        WHEN "fontWeight"
-            CALL populate_completer_sql("font_weight", buffer) RETURNING list
-
-        WHEN "textColor"
-            CALL populate_completer_sql("color", buffer) RETURNING list
-        WHEN "textDecoration"
-            CALL populate_completer_sql("text_decoration", buffer) RETURNING list
-    END CASE
-
-    CALL d.setCompleterItems(list)
-END FUNCTION
-
-FUNCTION populate_widget_attribute_value_sql(widget STRING, NAME STRING, BUFFER STRING) RETURNS itemsListType
-    DEFINE sql STRING
-    DEFINE value STRING
-    DEFINE list itemsListType
-
-    LET sql = "SELECT FIRST 50 value FROM widget_attribute_values WHERE widget = ? AND name = ? AND value LIKE ? ORDER BY weight, name"
-    LET BUFFER = BUFFER, "%"
-
-    DECLARE widget_attribute_value_curs CURSOR FROM sql
-    OPEN widget_attribute_value_curs USING widget, NAME, BUFFER
-
-    FOREACH widget_attribute_value_curs INTO value
-        LET list[list.getLength() + 1] = value
-    END FOREACH
-    RETURN list
-END FUNCTION
-
 FUNCTION populate_widget_attribute_name_sql(widget STRING, BUFFER STRING) RETURNS itemsListType
     DEFINE sql STRING
     DEFINE name STRING
@@ -192,16 +157,95 @@ FUNCTION populate_widget_attribute_name_sql(widget STRING, BUFFER STRING) RETURN
     RETURN list
 END FUNCTION
 
-FUNCTION populate_completer_name_sql(widget STRING, buffer STRING) RETURNS itemsListType
+-- Fills dialog box when typing in Value column of Widget Attributes tab
+FUNCTION populate_widget_attribute_value(d ui.Dialog, NAME STRING,  BUFFER STRING)
+    DEFINE list itemsListType
+
+    CALL populate_widget_attribute_value_sql(NAME, BUFFER) RETURNING list
+    CALL d.setCompleterItems(list)
+END FUNCTION
+FUNCTION populate_widget_attribute_value_sql(NAME STRING, BUFFER STRING) RETURNS itemsListType
+    DEFINE sql STRING
+    DEFINE value STRING
+    DEFINE list itemsListType
+
+    LET sql = "SELECT FIRST 50 value FROM widget_attribute_values WHERE name = ? AND value LIKE ? ORDER BY weight, name"
+    LET BUFFER = BUFFER, "%"
+
+    DECLARE widget_attribute_value_curs CURSOR FROM sql
+    OPEN widget_attribute_value_curs USING NAME, BUFFER
+
+    FOREACH widget_attribute_value_curs INTO value
+        LET list[list.getLength() + 1] = value
+    END FOREACH
+    RETURN list
+END FUNCTION
+
+-- Fills dialog box when typing in Name column of Widget Styles tab
+FUNCTION populate_widget_style_name(d ui.Dialog, widget STRING, BUFFER STRING)
+    DEFINE list itemsListType
+
+    CALL populate_widget_style_name_sql(widget, BUFFER) RETURNING list
+    CALL d.setCompleterItems(list)
+END FUNCTION
+FUNCTION populate_widget_style_name_sql(widget STRING, BUFFER STRING) RETURNS itemsListType
+    DEFINE sql STRING
+    DEFINE name STRING
+    DEFINE list itemsListType
+
+    LET sql = "SELECT FIRST 50 name FROM widget_style_names WHERE widget = ? AND name LIKE ? ORDER BY weight, name"
+    LET BUFFER = BUFFER, "%"
+
+    DECLARE widget_style_name_curs CURSOR FROM sql
+    OPEN widget_style_name_curs USING widget, BUFFER
+
+    FOREACH widget_style_name_curs INTO name
+        LET list[list.getLength() + 1] = name
+    END FOREACH
+    RETURN list
+END FUNCTION
+
+-- Fills dialog box when typing in Value column of Widget Styles tab
+FUNCTION populate_widget_style_value(d ui.Dialog, name CHAR(20), BUFFER STRING)
+    DEFINE list itemsListType
+
+    CALL populate_widget_style_value_sql(name, BUFFER) RETURNING list
+    CALL d.setCompleterItems(list)
+END FUNCTION
+FUNCTION populate_widget_style_value_sql(name STRING, BUFFER STRING) RETURNS itemsListType
+    DEFINE sql STRING
+    DEFINE value STRING
+    DEFINE list itemsListType
+
+    LET sql = "SELECT FIRST 50 value FROM widget_style_values WHERE name = ? AND value LIKE ? ORDER BY weight, name"
+    LET BUFFER = BUFFER, "%"
+
+    DECLARE widget_style_value_curs CURSOR FROM sql
+    OPEN widget_style_value_curs USING name, BUFFER
+
+    FOREACH widget_style_value_curs INTO value
+        LET list[list.getLength() + 1] = value
+    END FOREACH
+    RETURN list
+END FUNCTION
+
+-- Fills dialog box when typing in Name column of Common Styles tab
+FUNCTION populate_style_name(d ui.Dialog, widget STRING, BUFFER STRING)
+    DEFINE list itemsListType
+
+    CALL populate_completer_name_sql(widget, BUFFER) RETURNING list
+    CALL d.setCompleterItems(list)
+END FUNCTION
+FUNCTION populate_completer_name_sql(widget STRING, BUFFER STRING) RETURNS itemsListType
     DEFINE sql STRING
     DEFINE name STRING
     DEFINE list itemsListType
 
     LET sql = "SELECT FIRST 50 name FROM style_names WHERE widget = ? AND name LIKE ? ORDER BY weight, name"
-    LET buffer = buffer, "%"
+    LET BUFFER = BUFFER, "%"
 
     DECLARE style_name_curs CURSOR FROM sql
-    OPEN style_name_curs USING widget, buffer
+    OPEN style_name_curs USING widget, BUFFER
 
     FOREACH style_name_curs INTO name
         LET list[list.getLength() + 1] = name
@@ -209,16 +253,44 @@ FUNCTION populate_completer_name_sql(widget STRING, buffer STRING) RETURNS items
     RETURN list
 END FUNCTION
 
-FUNCTION populate_completer_sql(name STRING, buffer STRING) RETURNS itemsListType
+-- Fills dialog box when typing in Value column of Common Styles tab
+FUNCTION populate_style_value(d ui.Dialog, att STRING, BUFFER STRING)
+    DEFINE list itemsListType
+
+    CASE att
+        WHEN "backgroundColor"
+            CALL populate_completer_sql("color", BUFFER) RETURNING list
+        WHEN "border"
+            CALL populate_completer_sql("border", BUFFER) RETURNING list
+        WHEN "defaultTTFColor"
+            CALL populate_completer_sql("color", BUFFER) RETURNING list
+        WHEN "fontFamily"
+            CALL populate_completer_sql("font_family", BUFFER) RETURNING list
+        WHEN "fontSize"
+            CALL populate_completer_sql("font_size", BUFFER) RETURNING list
+        WHEN "fontStyle"
+            CALL populate_completer_sql("font_style", BUFFER) RETURNING list
+        WHEN "fontWeight"
+            CALL populate_completer_sql("font_weight", BUFFER) RETURNING list
+
+        WHEN "textColor"
+            CALL populate_completer_sql("color", BUFFER) RETURNING list
+        WHEN "textDecoration"
+            CALL populate_completer_sql("text_decoration", BUFFER) RETURNING list
+    END CASE
+
+    CALL d.setCompleterItems(list)
+END FUNCTION
+FUNCTION populate_completer_sql(name STRING, BUFFER STRING) RETURNS itemsListType
     DEFINE sql STRING
     DEFINE value STRING
     DEFINE list itemsListType
 
     LET sql = "SELECT FIRST 50 value FROM common_style_attributes WHERE name = ? AND value LIKE ? ORDER BY weight, value"
-    LET buffer = buffer, "%"
+    LET BUFFER = BUFFER, "%"
 
     DECLARE style_value_curs CURSOR FROM sql
-    OPEN style_value_curs USING name, buffer
+    OPEN style_value_curs USING name, BUFFER
 
     FOREACH style_value_curs INTO value
         LET list[list.getLength() + 1] = value
@@ -239,7 +311,7 @@ FUNCTION build_per() RETURNS STRING
         CALL sb.append("        Control [f01                 : ]\n" || "        Test    [f02                 : ]\n")  -- TODO set grid width to entered value
     ELSE IF m_data.container_name == "Table" THEN
             CALL sb.append("    TABLE\n" || "    {\n")
-            CALL sb.append("        [f01        |f02        ]\n")  -- TODO set table width to entered value
+            CALL sb.append("     Control         Test     \n" || "    [f01        |f02        ]\n")  -- TODO set table width to entered value
         END IF
     END IF
     CALL sb.append("    }\n" || "    END\n")
