@@ -45,7 +45,7 @@ MAIN
     LET m_data.widget_name = "Edit"
     LET m_data.container_name = "Grid"
     LET m_data.dialog_name = "Input"
-    LET m_data.dataType_name = "STRING"
+    LET m_data.dataType_name = "CHAR"
 
     DIALOG ATTRIBUTES(UNBUFFERED)
         -- INPUT for ComboBoxes
@@ -115,6 +115,7 @@ MAIN
         ON ACTION go
             DISPLAY build_per() TO per
             DISPLAY build_4st() TO st
+            WHENEVER ERROR CONTINUE
             RUN "fglform styledemo_test.per"
             -- TODO handle case if form fails to compile
             RUN "fglrun styledemo_test" WITHOUT WAITING

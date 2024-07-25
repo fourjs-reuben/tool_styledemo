@@ -390,12 +390,3 @@ FUNCTION widget_style_values()
     -- ProgressBar https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_progressbar_style_attributes.html
     -- TextEdit https://4js.com/online_documentation/fjs-fgl-manual-html/#fgl-topics/r_fgl_presentation_styles_textedit_style_attributes.html
 END FUNCTION
-
-FUNCTION dataType_names()
-    CREATE TABLE dataType_names (widget CHAR(20), name CHAR(20), weight INTEGER)
-    INSERT INTO dataType_names VALUES ("Edit", "CHAR", 1)
-    INSERT INTO dataType_names VALUES ("Edit", "INTEGER", 2)
-    INSERT INTO dataType_names VALUES ("Edit", "DECIMAL", 3)
-    INSERT INTO dataType_names VALUES ("Edit", "FLOAT", 4)
-    INSERT INTO dataType_names VALUES ("Edit", "DATE", 5)
-END FUNCTION
