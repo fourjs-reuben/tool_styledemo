@@ -11,7 +11,6 @@ FUNCTION populate_db()
     CALL common_style_attributes()
     CALL widget_style_names()
     CALL widget_style_values()
-    CALL dataType_names()
 END FUNCTION
 
 FUNCTION widget_names()
