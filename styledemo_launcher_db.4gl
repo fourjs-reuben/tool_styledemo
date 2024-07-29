@@ -11,11 +11,13 @@ FUNCTION populate_db()
     CALL common_style_attributes()
     CALL widget_style_names()
     CALL widget_style_values()
-    CALL dataType_names()
+
 END FUNCTION
 
 FUNCTION widget_names()
     CREATE TABLE widget_names(widget CHAR(20), weight INTEGER)
+
+    INSERT INTO widget_names VALUES ("Aggregate", 1)
     INSERT INTO widget_names VALUES ("ButtonEdit", 1)
     INSERT INTO widget_names VALUES ("CheckBox", 1)
     INSERT INTO widget_names VALUES ("ComboBox", 1)
@@ -28,23 +30,19 @@ FUNCTION widget_names()
     INSERT INTO widget_names VALUES ("RadioGroup", 1)
     INSERT INTO widget_names VALUES ("Slider", 1)
     INSERT INTO widget_names VALUES ("SpinEdit", 1)
+ -- INSERT INTO widget_names VALUES ("Table", 1)    
     INSERT INTO widget_names VALUES ("TextEdit", 1)
     INSERT INTO widget_names VALUES ("TimeEdit", 1)
-    { TODO move these to widget_attribute_names
-    INSERT INTO widget_names VALUES ("Width", 1)
-    INSERT INTO widget_names VALUES ("DisplayLike", 1)
-    INSERT INTO widget_names VALUES ("DoubleClick", 1)
-    INSERT INTO widget_names VALUES ("Flipped", 1)
-    INSERT INTO widget_names VALUES ("Height", 1)
-    INSERT INTO widget_names VALUES ("Orientation", 1)
-    INSERT INTO widget_names VALUES ("Split", 1)
-    }
     
 END FUNCTION
 
 FUNCTION widget_attribute_names()
     CREATE TABLE widget_attribute_names (widget CHAR(20), name CHAR(20), weight INTEGER)
-    --TODO update weight numbering
+    
+    INSERT INTO widget_attribute_names VALUES ("Aggregate", "aggregatetext", 10) 
+    INSERT INTO widget_attribute_names VALUES ("Aggregate", "aggregatetype", 11) 
+
+    
     INSERT INTO widget_attribute_names VALUES ("Edit", "autonext", 1) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "comment", 2) 
     INSERT INTO widget_attribute_names VALUES ("Edit", "invisible", 3) 
@@ -55,82 +53,98 @@ FUNCTION widget_attribute_names()
     INSERT INTO widget_attribute_names VALUES ("Edit", "upshift", 8)
     INSERT INTO widget_attribute_names VALUES ("Edit", "downshift", 9)
 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "autonext", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "autonext", 1) 
     INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "comment", 2) 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "invisible", 2) 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "justify", 2) 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "placeholder", 2) 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "scroll", 2) 
-    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "stretch", 2)
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "invisible", 3) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "placeholder", 5) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "scroll", 6) 
+    INSERT INTO widget_attribute_names VALUES ("ButtonEdit", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("CheckBox", "comment", 3) 
-    INSERT INTO widget_attribute_names VALUES ("CheckBox", "justify", 3) 
+    INSERT INTO widget_attribute_names VALUES ("CheckBox", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("CheckBox", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("CheckBox", "text", 14) 
 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "autonext", 4) 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "comment", 4) 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "invisible", 4) 
+    
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "autonext", 1) 
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "invisible", 3) 
     INSERT INTO widget_attribute_names VALUES ("ComboBox", "justify", 4) 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "placeholder", 4) 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "scroll", 4) 
-    INSERT INTO widget_attribute_names VALUES ("ComboBox", "stretch", 4)
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "placeholder", 5) 
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "scroll", 6) 
+    INSERT INTO widget_attribute_names VALUES ("ComboBox", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "autonext", 5) 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "comment", 5) 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "invisible", 5) 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "justify", 5) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "autonext", 1) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "invisible", 3) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "justify", 4) 
     INSERT INTO widget_attribute_names VALUES ("DateEdit", "placeholder", 5) 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "scroll", 5) 
-    INSERT INTO widget_attribute_names VALUES ("DateEdit", "stretch", 5)
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "scroll", 6) 
+    INSERT INTO widget_attribute_names VALUES ("DateEdit", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "autonext", 6) 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "comment", 6) 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "invisible", 6) 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "justify", 6) 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "placeholder", 6) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "autonext", 1) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "invisible", 3) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "placeholder", 5) 
     INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "scroll", 6) 
-    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "stretch", 6)
+    INSERT INTO widget_attribute_names VALUES ("DateTimeEdit", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("Image", "comment", 7) 
-    INSERT INTO widget_attribute_names VALUES ("Image", "justify", 7) 
+    INSERT INTO widget_attribute_names VALUES ("Image", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Image", "justify", 4) 
     INSERT INTO widget_attribute_names VALUES ("Image", "stretch", 7)
     
-    INSERT INTO widget_attribute_names VALUES ("Label", "comment", 8) 
-    INSERT INTO widget_attribute_names VALUES ("Label", "justify", 8) 
-    INSERT INTO widget_attribute_names VALUES ("Label", "stretch", 8)
+    INSERT INTO widget_attribute_names VALUES ("Label", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("Label", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("Label", "stretch", 7)
+    INSERT INTO widget_attribute_names VALUES ("Label", "text", 14)
 
-    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "comment", 9) 
-    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "justify", 9) 
-    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "stretch", 9)
+    
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("ProgressBar", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "comment", 10) 
-    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "justify", 10) 
-    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "stretch", 10)
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("RadioGroup", "stretch", 7)
 
-    INSERT INTO widget_attribute_names VALUES ("TextEdit", "comment", 11) 
-    INSERT INTO widget_attribute_names VALUES ("TextEdit", "justify", 11) 
-    INSERT INTO widget_attribute_names VALUES ("TextEdit", "placeholder", 11) 
-    INSERT INTO widget_attribute_names VALUES ("TextEdit", "scroll", 11) 
-    INSERT INTO widget_attribute_names VALUES ("TextEdit", "stretch", 11)
+    {INSERT INTO widget_attribute_names VALUES ("Table", "comment", 2)
+    INSERT INTO widget_attribute_names VALUES ("Table", "stretch", 7)
+    INSERT INTO widget_attribute_names VALUES ("Table", "aggregatetext", 10)
+    INSERT INTO widget_attribute_names VALUES ("Table", "width", 12)}
 
-    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "autonext", 12) 
-    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "comment", 12) 
-    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "justify", 12) 
-    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "placeholder", 12) 
-    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "stretch", 12)
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "placeholder", 5) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "scroll", 6) 
+    INSERT INTO widget_attribute_names VALUES ("TextEdit", "stretch", 7)
+
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "autonext", 1) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "comment", 2) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "justify", 4) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "placeholder", 5) 
+    INSERT INTO widget_attribute_names VALUES ("TimeEdit", "stretch", 7)
     
 END FUNCTION
 
 FUNCTION widget_attribute_values()
-    CREATE TABLE widget_attribute_values (name CHAR(20), value CHAR(20), weight INTEGER)
+    CREATE TABLE widget_attribute_values (name CHAR(20), value CHAR(20), weight INTEGER, quote BOOLEAN)
     -- TODO change widget_attribute_values format to this
-    INSERT INTO widget_attribute_values VALUES ("justify", "left", 1) 
-    INSERT INTO widget_attribute_values VALUES ("justify", "center", 2) 
-    INSERT INTO widget_attribute_values VALUES ("justify", "right", 3) 
+    INSERT INTO widget_attribute_values VALUES ("justify", "left", 1, false) 
+    INSERT INTO widget_attribute_values VALUES ("justify", "center", 2, false) 
+    INSERT INTO widget_attribute_values VALUES ("justify", "right", 3, false) 
 
-    INSERT INTO widget_attribute_values VALUES ("stretch", "none", 1)
-    INSERT INTO widget_attribute_values VALUES ("stretch", "x", 2)
-    INSERT INTO widget_attribute_values VALUES ("stretch", "y", 3)
-    INSERT INTO widget_attribute_values VALUES ("stretch", "both", 4)
+    INSERT INTO widget_attribute_values VALUES ("stretch", "none", 1, false)
+    INSERT INTO widget_attribute_values VALUES ("stretch", "x", 2, false)
+    INSERT INTO widget_attribute_values VALUES ("stretch", "y", 3, false)
+    INSERT INTO widget_attribute_values VALUES ("stretch", "both", 4, false)
+
+    INSERT INTO widget_attribute_values VALUES ("wordwrap", "compress", 1, false)
+    INSERT INTO widget_attribute_values VALUES ("wordwrap", "noncompress", 2, false)
+
+    INSERT INTO widget_attribute_values VALUES ("comment", "", 1, TRUE)
+    
+    INSERT INTO widget_attribute_values VALUES ("placeholder", "", 1, true)
 
 END FUNCTION
 
