@@ -66,9 +66,9 @@ END #VBOX
 END #LAYOUT
 ATTRIBUTES
 
-COMBOBOX f01 = formonly.WIDGET, ITEMS=("Edit"), NOENTRY;
-COMBOBOX f02 = formonly.container, ITEMS=("Grid"), NOENTRY;
-COMBOBOX f03 = formonly.dialog, ITEMS=("Input"), NOENTRY; 
+COMBOBOX f01 = formonly.widget_name, ITEMS=("Edit"), NOENTRY;
+COMBOBOX f02 = formonly.container_name, ITEMS=("Grid"), NOENTRY;
+COMBOBOX f03 = formonly.dialog_name, ITEMS=("Input"), NOENTRY; 
 
 EDIT c01 = formonly.widget_attribute_name, SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press SPACE";
 EDIT c02 = formonly.widget_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press SPACE";
@@ -83,7 +83,7 @@ TEXTEDIT t03 = formonly.st, STRETCH=BOTH, FONTPITCH=FIXED;
 BUTTON b01: go, TEXT="GO", STRETCH=X, STYLE="triple";
 INSTRUCTIONS 
 
-SCREEN RECORD scr(WIDGET, container, dialog);
+SCREEN RECORD scr(widget_name, container_name, dialog_name);
 
 SCREEN RECORD widget_attribute_scr(widget_attribute_name, widget_attribute_value); 
 SCREEN RECORD widget_style_scr(widget_style_attribute_name, widget_style_attribute_value);

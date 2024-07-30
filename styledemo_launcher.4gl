@@ -51,7 +51,7 @@ MAIN
                 CALL ui.Window.getCurrent().getForm().ensureElementVisible("pgper")
 
             ON CHANGE widget_attribute_name
-                CALL populate_widget_attribute_name(DIALOG,"edit", m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
+                CALL populate_widget_attribute_name(DIALOG,m_data.widget, m_data.widget_attribute_arr[arr_curr()].widget_attribute_name)
 
             ON CHANGE widget_attribute_value
                 CALL populate_widget_attribute_value(DIALOG, "edit", m_data.widget_attribute_arr[arr_curr()].widget_attribute_name, m_data.widget_attribute_arr[arr_curr()].widget_attribute_value) 
@@ -80,6 +80,7 @@ MAIN
 
             AFTER FIELD common_style_attribute_value
                 DISPLAY build_4st() TO st
+  
 
             AFTER ROW
                 DISPLAY build_4st() TO st
