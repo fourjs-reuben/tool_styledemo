@@ -1,90 +1,114 @@
 LAYOUT (TEXT="Widget & Style Demo Launcher")
-VBOX
-HBOX (SPLITTER)
-VBOX
-GRID
-{
-Widget    [f01      ] Container [f02      ] Dialog    [f03      ]  (NOT IMPLEMENTED)
-}
-END #GRID
-FOLDER
-PAGE (TEXT="Widget Attributes")
-TABLE (STRETCHCOLUMNS)
-{
-[c01        |c02        ]
-}
-END #TABLE
-END #PAGE
-PAGE (TEXT="Widget Styles")
-TABLE  (STRETCHCOLUMNS)
-{
-[c03       |c04       ]
-}
-END #TABLE
-END #PAGE
-PAGE (TEXT="Common Styles")
-TABLE  (STRETCHCOLUMNS)
-{
-[c05       |c06       ]
-}
-END #TABLE
-END #PAGE
-END #FOLDER
-END #VBOX
-FOLDER
-PAGE pg4gl (TEXT="Source (.4gl)")
-GRID
-{
-Not Implemented
-}
-END #GRID
-END #PAGE
-PAGE pgper (TEXT="Form (.per)")
-GRID
-{
-[t02                  ]
-}
-END #GRID
-END #PAGE
---TODO how can we show 4fd properties view equivalent
-PAGE pg4st (TEXT="Style (.4st)")
-GRID
-{
-[t03                  ]
-}
-END #GRID
-END #PAGE
-END #FOLDER
-END #HBOX
-GRID
-{
-[b01]
-[   ]
-[   ]
-}
-END #VBOX
+    VBOX
+        HBOX (SPLITTER)
+            VBOX
+                GRID grid_one
+                {
+                Container    [f01      ] Dialog      [f02      ]
+                Widget       [f03      ] DataType    [f04      ][b02]
+                             [f05      ]             [f06      ][b03]
+                
+                Case Style (optional)[f00                     ]
+                }
+                END #GRID
+                FOLDER
+                    PAGE p1 (TEXT="Widget Attributes")
+                        TABLE (STRETCHCOLUMNS)
+                        {
+                        [c01        |c02        ]
+                        }
+                        END #TABLE
+                    END #PAGE
+                    PAGE p2 (TEXT="Widget_2 Attributes")
+                        TABLE (STRETCHCOLUMNS)
+                        {
+                        [c03       |c04       ]
+                        }
+                        END #TABLE
+                    END #PAGE
+                    PAGE p3 (TEXT="Widget Styles")
+                        TABLE  (STRETCHCOLUMNS)
+                        {
+                        [c05       |c06       ]
+                        }
+                        END #TABLE
+                    END #PAGE
+                    PAGE p4 (TEXT="Widget_2 Styles")
+                        TABLE  (STRETCHCOLUMNS)
+                        {
+                        [c07       |c08       ]
+                        }
+                        END #TABLE
+                    END #PAGE
+                END #FOLDER
+            END #VBOX
+            FOLDER
+                PAGE pg4gl (TEXT="Source (.4gl)")
+                    GRID
+                    {
+                    [t01]
+                    }
+                    END #GRID
+                END #PAGE
+                PAGE pgper (TEXT="Form (.per)")
+                    GRID
+                    {
+                    [t02                  ]
+                    }
+                    END #GRID
+                END #PAGE
+                --TODO how can we show 4fd properties view equivalent
+                PAGE pg4st (TEXT="Style (.4st)")
+                    GRID
+                    {
+                    [t03                  ]
+                    }
+                    END #GRID
+                END #PAGE
+            END #FOLDER
+        END #HBOX
+        GRID
+        {
+        [b04]
+        [b01]
+        [   ]
+        }
+    END #VBOX
 END #LAYOUT
 ATTRIBUTES
+    radiogroup f00 = formonly.case_style_name, ORIENTATION=HORIZONTAL, ITEMS=("UPPERCASE", "camelCase", "lowercase");
+    combobox f01 = formonly.container_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a container";
+    combobox f02 = formonly.dialog_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a dialog";
+    combobox f03 = formonly.widget_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a widget";
+    combobox f04 = formonly.datatype_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a datatype";
+    combobox f05 = formonly.widget_2_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a widget";
+    combobox f06 = formonly.datatype_2_name, INITIALIZER=styledemo_launcher.firstComboBox, PLACEHOLDER="Select a datatype";
 
-COMBOBOX f01 = formonly.widget_name, ITEMS=("Edit"), NOENTRY;
-COMBOBOX f02 = formonly.container_name, ITEMS=("Grid"), NOENTRY;
-COMBOBOX f03 = formonly.dialog_name, ITEMS=("Input"), NOENTRY; 
+    edit c01 = formonly.widget_attribute_name, SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press SPACE";
+    edit c02 = formonly.widget_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press SPACE";
+    edit c03 = formonly.widget_2_attribute_name,  SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press Space";
+    edit c04 = formonly.widget_2_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press Space";
+    
+    edit c05 = formonly.widget_style_attribute_name,  SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press Space";
+    edit c06 = formonly.widget_style_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press Space";
+    edit c07 = formonly.widget_2_style_attribute_name,  SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press Space";
+    edit c08 = formonly.widget_2_style_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press Space";
 
-EDIT c01 = formonly.widget_attribute_name, SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press SPACE";
-EDIT c02 = formonly.widget_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press SPACE";
-EDIT c03 = formonly.widget_style_attribute_name,  SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Not implemented", NOENTRY;
-EDIT c04 = formonly.widget_style_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Not implemented", NOENTRY;
-EDIT c05 = formonly.common_style_attribute_name,  SCROLL, TITLE="Name", COMPLETER, PLACEHOLDER="Press SPACE";
-EDIT c06 = formonly.common_style_attribute_value, SCROLL, TITLE="Value", COMPLETER, PLACEHOLDER="Press SPACE";
+    textedit t01 = formonly.fourgl, STRETCH=BOTH, FONTPITCH=FIXED;
+    textedit t02 = formonly.per, STRETCH=BOTH, FONTPITCH=FIXED;
+    textedit t03 = formonly.st, STRETCH=BOTH, FONTPITCH=FIXED;
 
-TEXTEDIT t02 = formonly.per, STRETCH=BOTH, FONTPITCH=FIXED;
-TEXTEDIT t03 = formonly.st, STRETCH=BOTH, FONTPITCH=FIXED;
-
-BUTTON b01: go, TEXT="GO", STRETCH=X, STYLE="triple";
+    BUTTON b01: go, TEXT="GO", STRETCH=X, STYLE="triple";
+    BUTTON b02: add_widget, TEXT="Add Widget_2";
+    BUTTON b03: remove_widget, TEXT="Remove Widget_2";
+    BUTTON b04: display_files, TEXT="Display Code", STRETCH=X, STYLE="triple";
+END #ATTRIBUTES
 INSTRUCTIONS 
+    SCREEN RECORD scr(case_style_name, widget_name, container_name, dialog_name, datatype_name, widget_2_name, datatype_2_name);
 
-SCREEN RECORD scr(widget_name, container_name, dialog_name);
+    SCREEN RECORD widget_attribute_scr(widget_attribute_name, widget_attribute_value);
+    SCREEN RECORD widget_2_attribute_scr(widget_2_attribute_name, widget_2_attribute_value);
 
-SCREEN RECORD widget_attribute_scr(widget_attribute_name, widget_attribute_value); 
-SCREEN RECORD widget_style_scr(widget_style_attribute_name, widget_style_attribute_value);
-SCREEN RECORD common_style_scr(common_style_attribute_name, common_style_attribute_value);
+    SCREEN RECORD widget_style_scr(widget_style_attribute_name, widget_style_attribute_value);
+    SCREEN RECORD widget_2_style_scr(widget_2_style_attribute_name, widget_2_style_attribute_value);
+END #INSTRUCTIONS
