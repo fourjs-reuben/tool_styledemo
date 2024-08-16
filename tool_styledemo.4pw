@@ -80,10 +80,5 @@
       <File filePath="styledemo_launcher_db.4gl"/>
       <File filePath="styledemo_launcher_template.4st"/>
     </Application>
-    <Application binaryName="styledemo_test" dependencies="14000,1986" id="18736" label="styledemo_test">
-      <Configuration id="-1429969501" label="Application"/>
-      <File filePath="styledemo_test.4gl"/>
-      <File excludeFromCompilation="true" excludeFromLink="true" filePath="styledemo_test_orig.per"/>
-    </Application>
   </Group>
 </Project>
